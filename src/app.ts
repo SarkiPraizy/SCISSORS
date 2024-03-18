@@ -26,8 +26,8 @@ app.use("/", appLimiter); //Use to limit repeated requests to the server
 app.use("/api/auth",router)
 app.use("/api/url",UrlRouter)
 app.use("/api/user",userRouter)
-// app.get("/", (req: Request, res: Response) => {
-//   res.send("Welcome to the homepage");
-// });
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to the homepage");
+});
 
 export default app;
