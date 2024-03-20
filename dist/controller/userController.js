@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reactivateAccount = exports.resetPassword = exports.forgetPassword = exports.logout = exports.updateUser = exports.deleteUser = void 0;
+exports.reactivateAccount = exports.resetPassword = exports.forgetPassword = exports.updateUser = exports.deleteUser = void 0;
 const errorHandler_1 = __importDefault(require("../Utils/errorHandler"));
 const sendEmail_1 = __importDefault(require("../Utils/sendEmail"));
 const sendResponse_1 = __importDefault(require("../Utils/sendResponse"));
@@ -57,13 +57,12 @@ const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.deleteUser = deleteUser;
-const logout = (req, res) => {
-    res.clearCookie("jwt", {
-        httpOnly: true,
-    });
-    res.status(200).json({ message: "You are logged out" });
-};
-exports.logout = logout;
+// const logout = (req: Request, res: Response): void => {
+//   res.clearCookie("jwt", {
+//     httpOnly: true,
+//   });
+//   res.status(200).json({ message: "You are logged out" });
+// };
 function forgetPassword(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

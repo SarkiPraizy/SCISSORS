@@ -10,7 +10,7 @@ userRouter.post('/forget_Password', userController.forgetPassword);
 userRouter.patch('/reset_Password/:Token', isAuthenticated,userController.resetPassword);
 userRouter.delete('/Deactivate_acct/:id', isAuthenticated, userController.deleteUser);
 userRouter.post('/reactivate_account',userController.reactivateAccount);
-userRouter.post('/ logout', isAuthenticated,userController.logout);
+// userRouter.post('/logout', isAuthenticated,userController.logout);
 
   
 

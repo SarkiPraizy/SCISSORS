@@ -12,11 +12,14 @@ const authRoute_1 = __importDefault(require("./route/authRoute"));
 const url_1 = __importDefault(require("./route/url"));
 const path_1 = __importDefault(require("path"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const viewsRouter_1 = __importDefault(require("./route/viewsRouter"));
 const app = (0, express_1.default)();
-app.use(body_parser_1.default.json());
 app.set('view engine', 'ejs');
 app.set('views', path_1.default.join(__dirname, 'views'));
-console.log(path_1.default.join(__dirname, 'views'));
+app.use(body_parser_1.default.json());
+app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+console.log(path_1.default.join(__dirname, 'public'));
+// console.log(path.join(__dirname, 'views'))
 const appLimiter = (0, express_rate_limit_1.default)({
     max: 100, // max allowable number of requests from an IP address in a given timeframe
     windowMs: 60 * 60 * 1000, // 1 hour
@@ -26,8 +29,6 @@ app.use("/", appLimiter); //Use to limit repeated requests to the server
 app.use("/api/auth", authRoute_1.default);
 app.use("/api/url", url_1.default);
 app.use("/api/user", userRouter_1.default);
-app.get("/", (req, res) => {
-    res.send("Welcome to the homepage");
-});
+app.use("/", viewsRouter_1.default);
 exports.default = app;
 //# sourceMappingURL=app.js.map

@@ -39,9 +39,6 @@ const signUpUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         });
         if (!user)
             return next(new Error("Bad request! try again later."));
-        // user.password = undefined;
-        // user.confirmPassword = undefined;
-        // user.__v = undefined;
         const token = (0, genToken_1.default)(user._id);
         const mail = new sendEmail_1.default();
         yield mail.sendWelcomeEmail(user);
@@ -73,8 +70,6 @@ const signInUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         const isValid = yield user.isCorrectPassword(password);
         if (!isValid)
             return next(new Error("invalid password or email"));
-        // user.password = undefined;
-        // user.__v = undefined;
         const token = (0, genToken_1.default)(user._id);
         res.status(200).json({
             status: 'success',

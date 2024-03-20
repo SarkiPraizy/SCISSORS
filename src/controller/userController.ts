@@ -45,13 +45,13 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-const logout = (req: Request, res: Response): void => {
-  res.clearCookie("jwt", {
-    httpOnly: true,
-  });
+// const logout = (req: Request, res: Response): void => {
+//   res.clearCookie("jwt", {
+//     httpOnly: true,
+//   });
 
-  res.status(200).json({ message: "You are logged out" });
-};
+//   res.status(200).json({ message: "You are logged out" });
+// };
 
 async function forgetPassword(
   req: Request,
@@ -135,7 +135,7 @@ async function reactivateAccount(
 
 export {
   updateUser,
-  logout,
+  // logout,
   forgetPassword,
   resetPassword,
   reactivateAccount,

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Signup</title>
+    <title>Login</title>
     <style>
       /* CSS styles */
       body {
@@ -11,6 +11,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        flex-direction: column;
       }
 
       .container {
@@ -36,7 +37,6 @@
       }
 
       input[type="text"],
-      input[type="email"],
       input[type="password"] {
         width: 100%;
         padding: 10px;
@@ -61,52 +61,37 @@
       }
 
       /* Responsive styles */
-      @media screen and (max-width: 767px) {
-        /* Adjust styles for screens smaller than 767px */
+      @media screen and (max-width: 480px) {
+        /* Adjust styles for screens smaller than 480px */
         .container {
           width: 100%;
           padding: 10px;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-          margin-bottom: 10px;
-        }
-
-        button {
-          padding: 8px 16px;
+        h2.container {
+          font-size: 20px;
         }
       }
     </style>
   </head>
   <body>
+    <h2 class="container">Welcome to Sarki Scissors</h2>
     <div class="container">
-      <h1>Signup</h1>
+      <h1>Login</h1>
 
-      <form action="/signup" method="POST">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required />
-
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required />
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+      <form action="/login" method="POST">
+        <label for="usernameOrEmail">Username/Email:</label>
+        <input type="text" id="usernameOrEmail" name="email" required />
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
 
-        <label for="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          required
-        />
-
-        <button type="submit">Sign Up</button>
+        <button type="submit" class="btn">
+          Login/<a href="/signUp">signup</a>
+        </button>
       </form>
     </div>
+
+    <script></script>
   </body>
 </html>

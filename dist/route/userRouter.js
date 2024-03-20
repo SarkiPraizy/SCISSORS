@@ -33,6 +33,6 @@ userRouter.post('/forget_Password', userController.forgetPassword);
 userRouter.patch('/reset_Password/:Token', authMiddleware_1.isAuthenticated, userController.resetPassword);
 userRouter.delete('/Deactivate_acct/:id', authMiddleware_1.isAuthenticated, userController.deleteUser);
 userRouter.post('/reactivate_account', userController.reactivateAccount);
-userRouter.post('/ logout', authMiddleware_1.isAuthenticated, userController.logout);
+// userRouter.post('/logout', isAuthenticated,userController.logout);
 exports.default = userRouter;
 //# sourceMappingURL=userRouter.js.map

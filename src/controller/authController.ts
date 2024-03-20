@@ -27,9 +27,7 @@ const signUpUser = async (req: Request, res: Response, next: NextFunction): Prom
       confirmPassword,
     });
     if (!user) return next(new Error("Bad request! try again later."))
-    // user.password = undefined;
-    // user.confirmPassword = undefined;
-    // user.__v = undefined;
+
 
     const token: string = genToken(user._id);
 
@@ -67,9 +65,6 @@ const signInUser = async (req: Request, res: Response, next: NextFunction): Prom
     }
     const isValid = await user.isCorrectPassword(password)
     if(!isValid) return next(new Error("invalid password or email"))
-
-    // user.password = undefined;
-    // user.__v = undefined;
 
     const token: string = genToken(user._id);
 
