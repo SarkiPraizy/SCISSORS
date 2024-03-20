@@ -34,7 +34,7 @@
   },
   "module": "type",
   "engines": {
-    "node": ">=14.20.1"
+    "node": ">=18.18.0 <19.0.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
