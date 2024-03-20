@@ -8,6 +8,7 @@ import UrlRouter from './route/url';
 import  path  from 'path';
 import rateLimit from 'express-rate-limit';
 import viewRouter from './route/viewsRouter';
+import { signUpUser, signInUser } from './controller/authController';
 
 
 const app = express();

@@ -6,16 +6,6 @@ import genToken from '../Utils/genToken';
 import EmailSender from '../Utils/sendEmail';
 
 
-// interface User {
-//   _id?: string;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   password: string;
-//   confirmPassword: string;
-//   __v?: number;
-// }
-
 const signUpUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { firstName, lastName, email, password, confirmPassword } = req.body;
