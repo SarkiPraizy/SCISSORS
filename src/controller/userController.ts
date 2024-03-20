@@ -3,7 +3,6 @@ import AppError from '../Utils/errorHandler';
 import EmailSender from '../Utils/sendEmail';
 import SendResponse from '../Utils/sendResponse';
 import UserUrl from '../model/UserUrl';
-import genToken from '../Utils/genToken';
 import Auth from '../model/authModel';
 import { error } from 'jquery';
 
