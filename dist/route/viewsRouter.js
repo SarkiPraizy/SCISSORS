@@ -7,5 +7,6 @@ const express_1 = __importDefault(require("express"));
 const viewRouter = express_1.default.Router();
 viewRouter.get("/", (req, res) => { res.status(200).render("signUp"); });
 viewRouter.get("/login", (req, res) => { res.status(200).render("login"); });
+viewRouter.get("/short", (req, res) => { res.status(200).render("shortUrl"); });
 exports.default = viewRouter;
 //# sourceMappingURL=viewsRouter.js.map

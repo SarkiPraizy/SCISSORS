@@ -39,7 +39,7 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
       const {message} = res.data
     showAlert("success", message)
        window.setTimeout(() => {
-          location.assign('/login');
+          location.assign('/views/login');
         }, 5000);
         console.log("signup is successful")
         console.log(res.data)

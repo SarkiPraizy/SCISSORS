@@ -1,51 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
     <style>
       body {
-        margin: 30px;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+      }
+
+      .container {
+        max-width: 400px;
+        width: 100%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
       .form-group {
         margin-bottom: 20px;
       }
 
-      .btn {
-        margin-top: 10px;
+      label {
+        font-weight: bold;
       }
 
-      .card {
-        margin-bottom: 20px;
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .shortened-url {
+        margin-top: 20px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>URL Shortener</h1>
+      <h2>URL Shortener</h2>
+      <div class="form-group">
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" placeholder="Enter your URL" />
+      </div>
+      <button onclick="shortenUrl()">Shorten URL</button>
+      <div class="shortened-url" id="shortenedUrl"></div>
+    </div>
 
-      <form action="/short" method="POST">
-        <div class="form-group">
-          <label for="originalUrl">Enter the URL:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="originalUrl"
-            name="originalUrl"
-            placeholder="Enter URL"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Shorten</button>
-      </form>
-    </div>
-    <div class="container">
-      <a href="/costumeUrl">
-        <button type="submit" class="btn btn-primary">Customize url</button></a
-      >
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/client/shortUrl.js"></script>
   </body>
 </html>
