@@ -45,13 +45,13 @@ class EmailSender {
 
   async sendWelcomeEmail(user: any) {
     const emailAddress: string = user.email;
-    const username: string = user.username;
+    const firstName: string = user.firstName;
     const message: string = "Welcome to Scissors , your number one platform for short url. We are delighted to have you";
     const heading = 'Welcome';
     const templatePath = path.join(__dirname, '../views/email.ejs');
     const template = await ejs.renderFile(templatePath, {
       message,
-      username,
+      firstName,
       heading,
     });
     return this.sendEmail(emailAddress, message, heading, template);

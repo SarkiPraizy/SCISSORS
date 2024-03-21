@@ -9,6 +9,7 @@ const config_1 = require("./config");
 const app_1 = __importDefault(require("./app"));
 const PORT = 7070;
 const HOSTNAME = '0.0.0.0';
+console.log(process.env.NODE_ENV);
 // Connect to the database when the application starts
 (0, config_1.mongoDbConnection)();
 app_1.default.listen(PORT, HOSTNAME, () => {

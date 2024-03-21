@@ -1,3 +1,18 @@
+const showAlert = (type, msg) => {
+  hideAlert();
+  const markup = `<div class="alert alert--${type}">${msg}</div>`;
+  document.body.insertAdjacentHTML('afterbegin', markup);
+  window.setTimeout(hideAlert, 5000);
+};
+
+const hideAlert = () => {
+  const alertElement = document.querySelector('.alert');
+  if (alertElement) {
+    alertElement.parentElement.removeChild(alertElement);
+  }
+};
+
+
 document.getElementById('signup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
   
@@ -9,24 +24,43 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
   
     try {
       const res = await signUp(firstName, lastName, email, password, confirmPassword);
-      if (res.status === 201) {
-        const data = res.data;
-        console.log(data);
-        document.getElementById('response').textContent = 'Sign up successful';
-      }
+      
     } catch (error) {
       console.error(error);
-      document.getElementById('response').textContent = 'Error: ' + error.message;
-    }
+      }
   });
   
   const signUp = async (firstName, lastName, email, password, confirmPassword) => {
     try {
-      const res = await axios.post("/api/signup", { firstName, lastName, email, password, confirmPassword });
-      return res;
-    } catch (error) {
-      throw error;
+      const res = await axios.post("/api/auth/signup", { firstName, lastName, email, password, confirmPassword });
+      console.log(res)
+
+      if(res.status === 201){
+      const {message} = res.data
+    showAlert("success", message)
+       window.setTimeout(() => {
+          location.assign('/login');
+        }, 5000);
+        console.log("signup is successful")
+        console.log(res.data)
+        return res;
+      }
+
+    else {
+      console.log("signup is unsuccessful")
     }
+
+  }catch (error) {
+    console.log(error.response)
+    if (error.response) {
+    showAlert("fail", error.response.data.message)
+    } 
+    else {
+      showAlert("fail", "Something went wrong")
+    }
+  }
+  
+  
   };
   
   console.log("connected")

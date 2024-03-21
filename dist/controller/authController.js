@@ -18,6 +18,7 @@ dotenv_1.default.config();
 const authModel_1 = __importDefault(require("../model/authModel"));
 const genToken_1 = __importDefault(require("../Utils/genToken"));
 const sendEmail_1 = __importDefault(require("../Utils/sendEmail"));
+const errorHandler_1 = __importDefault(require("../Utils/errorHandler"));
 const signUpUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { firstName, lastName, email, password, confirmPassword } = req.body;
@@ -29,7 +30,7 @@ const signUpUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             confirmPassword,
         });
         if (!user)
-            return next(new Error("Bad request! try again later."));
+            return next(new errorHandler_1.default("Bad request! try again later.", 400));
         const token = (0, genToken_1.default)(user._id);
         const mail = new sendEmail_1.default();
         yield mail.sendWelcomeEmail(user);
@@ -43,7 +44,7 @@ const signUpUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         });
     }
     catch (error) {
-        next(error);
+        next(new errorHandler_1.default(error, 500));
     }
 });
 exports.signUpUser = signUpUser;
@@ -51,16 +52,15 @@ const signInUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     try {
         const { email, password } = req.body;
         if (!email || !password) {
-            return next(new Error('Bad request! Email and Password are required.'));
+            return next(new errorHandler_1.default('Bad request! Email and Password are required.', 400));
         }
         const user = yield authModel_1.default.findOne({ email }).select('+password');
-        console.log(user);
         if (!user) {
-            return next(new Error('No user was found.'));
+            return next(new errorHandler_1.default('No user was found.', 404));
         }
         const isValid = yield user.isCorrectPassword(password);
         if (!isValid)
-            return next(new Error("invalid password or email"));
+            return next(new errorHandler_1.default("invalid password or email", 401));
         const token = (0, genToken_1.default)(user._id);
         res.status(200).json({
             status: 'success',
@@ -71,10 +71,10 @@ const signInUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
             },
         });
         if (!user)
-            return next(new Error("Bad request! try again later."));
+            return next(new errorHandler_1.default("Bad request! try again later.", 400));
     }
     catch (error) {
-        next(error);
+        next(new errorHandler_1.default(error, 500));
     }
 });
 exports.signInUser = signInUser;

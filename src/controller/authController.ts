@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 import auth from '../model/authModel';
 import genToken from '../Utils/genToken';
 import EmailSender from '../Utils/sendEmail';
+import AppError from '../Utils/errorHandler';
 
 
 const signUpUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -16,7 +17,7 @@ const signUpUser = async (req: Request, res: Response, next: NextFunction): Prom
       password,
       confirmPassword,
     });
-    if (!user) return next(new Error("Bad request! try again later."))
+    if (!user) return next(new AppError("Bad request! try again later.", 400))
 
 
     const token: string = genToken(user._id);
@@ -34,8 +35,8 @@ const signUpUser = async (req: Request, res: Response, next: NextFunction): Prom
         },
       });
     
-    } catch (error) {
-    next(error);
+    } catch (error: any) {
+      next(new AppError(error, 500));
   }
 };
 
@@ -44,17 +45,17 @@ const signInUser = async (req: Request, res: Response, next: NextFunction): Prom
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return next(new Error('Bad request! Email and Password are required.'));
+      return next(new AppError('Bad request! Email and Password are required.', 400));
     }
 
     const user: any | null = await auth.findOne({ email }).select('+password');
-    console.log(user)
+    
 
     if (!user) {
-      return next(new Error('No user was found.'));
+      return next(new AppError('No user was found.', 404));
     }
     const isValid = await user.isCorrectPassword(password)
-    if(!isValid) return next(new Error("invalid password or email"))
+    if(!isValid) return next(new AppError("invalid password or email",401))
 
     const token: string = genToken(user._id);
 
@@ -66,10 +67,10 @@ const signInUser = async (req: Request, res: Response, next: NextFunction): Prom
           user,
         },
       });
-     if (!user) return next(new Error("Bad request! try again later."))
+     if (!user) return next(new AppError("Bad request! try again later.", 400))
     }
-   catch (error) {
-    next(error);
+   catch (error: any) {
+    next(new AppError(error, 500));
   }
 };
 

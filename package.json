@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./dist/server.js",
-    "start": "node ./dist/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./dist/server.js",
+    "start": "cross-env NODE_ENV=production concurrently \"node ./dist/server.js\"",
     "watch": "tsc --watch"
   },
   "author": "Praise Ibu",
@@ -34,7 +34,7 @@
   },
   "module": "type",
   "engines": {
-    "node": ">=18.18.0 <19.0.0"
+    "node": ">=14.20.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -51,6 +51,8 @@
     "@types/qr-image": "^3.2.9",
     "@types/qrcode": "^1.5.5",
     "@types/validator": "^13.11.9",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "nodemon": "^3.0.3",
     "typescript": "^5.3.3"
   }

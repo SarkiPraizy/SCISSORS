@@ -79,19 +79,22 @@
     <div class="container">
       <h1>Login</h1>
 
-      <form action="/login" method="POST">
-        <label for="usernameOrEmail">Username/Email:</label>
-        <input type="text" id="usernameOrEmail" name="email" required />
+      <!-- <form action="/login" method="POST"> -->
+        <form id="login-form">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-
-        <button type="submit" class="btn">
-          Login/<a href="/signUp">signup</a>
-        </button>
-      </form>
+          <label for="Email">Email:</label>
+          <input type="text" id="email" name="email" required />
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          
+          <button type="submit" class="btn">Login</button>
+          <span>
+            If you don't have an account? sign up <a href="/">here</a>
+          </form>
     </div>
 
-    <script></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/client/login.js"></script>
   </body>
 </html>

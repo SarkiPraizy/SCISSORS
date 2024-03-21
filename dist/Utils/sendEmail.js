@@ -50,13 +50,13 @@ class EmailSender {
     sendWelcomeEmail(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const emailAddress = user.email;
-            const username = user.username;
+            const firstName = user.firstName;
             const message = "Welcome to Scissors , your number one platform for short url. We are delighted to have you";
             const heading = 'Welcome';
             const templatePath = path_1.default.join(__dirname, '../views/email.ejs');
             const template = yield ejs_1.default.renderFile(templatePath, {
                 message,
-                username,
+                firstName,
                 heading,
             });
             return this.sendEmail(emailAddress, message, heading, template);

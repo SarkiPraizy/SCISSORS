@@ -8,7 +8,7 @@ import UrlRouter from './route/url';
 import  path  from 'path';
 import rateLimit from 'express-rate-limit';
 import viewRouter from './route/viewsRouter';
-import { signUpUser, signInUser } from './controller/authController';
+import errorHandler from './controller/errorController';
 
 
 const app = express();
@@ -35,5 +35,7 @@ app.use("/api/auth",router)
 app.use("/api/url",UrlRouter)
 app.use("/api/user",userRouter)
 app.use("/", viewRouter)
+
+app.use(errorHandler);
 
 export default app;
