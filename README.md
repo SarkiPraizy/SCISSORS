@@ -9,14 +9,13 @@ Key Features:
 - Shorten any valid and accessible URL.
 - Customize the shortened alias to make it more memorable and descriptive.
 - Generate **downloadable** QR codes for your shortened URLs, allowing easy access through mobile devices.
-- All users, whether authenticated or not, can utilize the URL shortening, customization, and QR code generation features.
+- All Users can utilize the URL shortening, customization, and QR code generation features.
 
 Authenticated User Features:
 
 - Authenticated users gain access to additional features:
 - View their shortened URL history for easy management.
 - Access detailed statistics for each shortened URL, including click counts and sources.
-- Track and analyze the performance of their shortened URLs.
 
 Scissors simplifies URL management and provides a seamless experience for users, allowing them to optimize their URL sharing process. Experience the convenience of concise and trackable URLs by using URL Scissors today.
 
