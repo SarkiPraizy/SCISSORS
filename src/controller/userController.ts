@@ -4,7 +4,6 @@ import EmailSender from '../Utils/sendEmail';
 import SendResponse from '../Utils/sendResponse';
 import UserUrl from '../model/UserUrl';
 import Auth from '../model/authModel';
-import { error } from 'jquery';
 
 
 const updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -98,8 +97,6 @@ async function resetPassword(
     user.passwordResetTokenExpiryTime = undefined;
 
     await user.save();
-    // const token = await genToken(user._id);
-    // res.cookie("jwt", token, { httpOnly: true });
     res
       .status(200)
       .json({ message: "A new password has been set", user });

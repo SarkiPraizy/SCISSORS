@@ -102,8 +102,6 @@ function resetPassword(req, res, next) {
             user.passwordResetToken = undefined;
             user.passwordResetTokenExpiryTime = undefined;
             yield user.save();
-            // const token = await genToken(user._id);
-            // res.cookie("jwt", token, { httpOnly: true });
             res
                 .status(200)
                 .json({ message: "A new password has been set", user });

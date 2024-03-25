@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
 import UserUrl from '../model/UserUrl';
 import qr from 'qrcode';
+import client from '../redis';
 
 
 

@@ -12,9 +12,6 @@ const userUrlSchema = new mongoose_1.Schema({
     },
     clicks: { type: Number, required: true, default: 0 },
     date: { type: String, default: Date.now().toString() },
-    // password: { type: String, required: true }, // Add the 'password' property to the schema
-    // passwordResetToken: { type: String, default: undefined },
-    // resetTimeExp: { type: Number, default: undefined },
 });
 const UserUrl = (0, mongoose_1.model)("userUrl", userUrlSchema);
 exports.default = UserUrl;

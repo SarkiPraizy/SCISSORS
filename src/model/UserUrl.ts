@@ -7,10 +7,6 @@ interface UserUrl extends Document {
   user_id: Types.ObjectId;
   clicks: number;
   date: string;
-  // createResetToken: () => string;
-  // password: string; // Add the 'password' property
-  // passwordResetToken: string | undefined;
-  // resetTimeExp: number | undefined;
 }
 
 const userUrlSchema = new Schema<UserUrl>({
@@ -24,9 +20,6 @@ const userUrlSchema = new Schema<UserUrl>({
   },
   clicks: { type: Number, required: true, default: 0 },
   date: { type: String, default: Date.now().toString() },
-  // password: { type: String, required: true }, // Add the 'password' property to the schema
-  // passwordResetToken: { type: String, default: undefined },
-  // resetTimeExp: { type: Number, default: undefined },
 });
 
 const UserUrl = model<UserUrl>("userUrl", userUrlSchema);
