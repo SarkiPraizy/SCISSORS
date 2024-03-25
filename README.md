@@ -98,7 +98,7 @@ npm install
 2. **Run the development server:**
 
 ```bash
-npm run start:dev
+npm start
 ```
 
 1. **At this point, your server should be up and running** at[http://localhost:7070](http://localhost:7070)
